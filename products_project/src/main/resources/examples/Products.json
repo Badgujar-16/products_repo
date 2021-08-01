@@ -1,0 +1,18 @@
+[
+  {
+    "ProductCode": "P101",
+    "ProductName": "HardDisk",
+    "ProductVendor": "HP",
+    "ProductDescription": "1 TB Memory Storage",
+    "BuyPrice": 3500,
+    "MSRP": 5000
+  },
+  {
+    "ProductCode": "P102",
+    "ProductName": "OnePlus Buds",
+    "ProductVendor": "OnePlus",
+    "ProductDescription": "Truely Wireless Earphones",
+    "BuyPrice": 4000,
+    "MSRP": 4500
+  }
+]

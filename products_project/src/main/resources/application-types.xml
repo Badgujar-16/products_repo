@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="products" format="json">
+      <types:shape format="weave" example="examples/Products.json"><![CDATA[%dw 2.0
+
+type products = Array<{|  ProductCode: String,   ProductName: String,   ProductVendor: String,   ProductDescription: String,   BuyPrice: Number {"typeId": "int"},   MSRP: Number {"typeId": "int"}|}> {"example": "[{\\\"ProductCode\\\":\\\"P101\\\",\\\"ProductName\\\":\\\"HardDisk\\\",\\\"ProductVendor\\\":\\\"HP\\\",\\\"ProductDescription\\\":\\\"1 TB Memory Storage\\\",\\\"BuyPrice\\\":3500,\\\"MSRP\\\":5000},{\\\"ProductCode\\\":\\\"P102\\\",\\\"ProductName\\\":\\\"OnePlus Buds\\\",\\\"ProductVendor\\\":\\\"OnePlus\\\",\\\"ProductDescription\\\":\\\"Truely Wireless Earphones\\\",\\\"BuyPrice\\\":4000,\\\"MSRP\\\":4500}]"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="obj" format="json">
+      <types:shape format="weave" example="examples/Productobj.json"><![CDATA[%dw 2.0
+
+type obj = {|
+  ProductCode: String, 
+  ProductName: String, 
+  ProductVendor: String, 
+  ProductDescription: String, 
+  BuyPrice: Number {"typeId": "int"}, 
+  MSRP: Number {"typeId": "int"}
+|} {"example": "{\\\"ProductCode\\\":\\\"P101\\\",\\\"ProductName\\\":\\\"HardDisk\\\",\\\"ProductVendor\\\":\\\"HP\\\",\\\"ProductDescription\\\":\\\"1 TB Memory Storage\\\",\\\"BuyPrice\\\":3500,\\\"MSRP\\\":5000}"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#270ed146-4c96-40f6-a920-007beab51ac0">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="products"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#6f20bc0a-2b08-4b70-97b5-3196264d1685">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="obj"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
